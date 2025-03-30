@@ -11,9 +11,6 @@ def load_data(train_path: str, test_path: str):
     return train_df, test_df
 
 def preprocess_data(df: pd.DataFrame):
-    """
-    Preprocess the dataset: drop unwanted columns, separate features (X) and target (y).
-    """
     drop_cols = ["trans_date_trans_time", "cc_num", "first", "last",
                  "street", "dob", "trans_num", "unix_time", "merchant"]
 
@@ -25,9 +22,6 @@ def preprocess_data(df: pd.DataFrame):
     return X, y
 
 def create_preprocessor(X_train):
-    """
-    Create a preprocessing pipeline with scaling and encoding.
-    """
     numeric_features = X_train.select_dtypes(include=["number"]).columns.tolist()
     categorical_features = X_train.select_dtypes(include=["object", "category"]).columns.tolist()
 
